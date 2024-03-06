@@ -1,0 +1,65 @@
+.pelicula-contenedor {
+    margin: 90px 180px;
+    display: grid;
+    grid-template-columns: 210px auto;
+    grid-template-rows: auto auto;
+    gap: 20px;
+}
+
+.pelicula-figure {
+    height: 300px;
+    width: 200px;
+}
+
+.pelicula-imagen {
+    height: 300px;
+    width: 200px;
+    border-radius: 4px;
+}
+
+.pelicula-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pelicula-titulo {
+    font-size: 2rem;
+    letter-spacing: 2.5px;
+}
+
+.pelicula-aux {
+    display: flex;
+    gap: 20px;
+}
+
+.pelicula-calificacion {
+    color: yellow;
+    font-weight: bold;
+}
+
+.pelicula-descripcion {
+    line-height: 25px;
+}
+
+.pelicula-genero,
+.pelicula-director,
+.pelicula-actores {
+    color: rgb(146, 146, 146);
+}
+
+.pelicula-span {
+    font-weight: bold;
+    color: white;
+}
+
+.pelicula-trailer {
+    grid-column: 1/3;
+    
+}
+
+.pelicula-video {
+    width: 100%;
+    height: 850px;
+}
+

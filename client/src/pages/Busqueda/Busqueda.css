@@ -1,0 +1,27 @@
+.busqueda-contenedor {
+    
+}
+
+.busqueda-input {
+    width: 100%;
+    padding: 1rem 3rem;
+    background-color: rgba(128, 128, 128, 0.267);
+    color: white;
+    font-size: 3rem;
+    border: 0;
+    margin-bottom: 40px;
+}
+
+.busqueda-titulo {
+    margin-inline: 90px;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.busqueda-grid {
+    margin-inline: 90px;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}

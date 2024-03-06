@@ -1,0 +1,31 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+:root {
+  --color-primario: #0E1017;
+  --color-secundario: #000000;
+  --color-tercero: #222222;
+  --fuente-primario: sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--fuente-primario);
+}
+
+body {
+  background-color: #151722;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: white;
+}
+
+.h1-prueba {
+  color: white;
+  margin-left: 90px;
+}

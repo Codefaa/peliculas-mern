@@ -1,0 +1,53 @@
+.glide-carruseles {
+    width: calc(100% - 180px); /* Ancho ajustado */
+    position: relative;
+    margin-left: 90px; /* Espacio en la izquierda */
+    margin-right: 90px; /* Espacio en la izquierda */
+}
+
+
+.glide__slides {
+    margin-left: -90px; /* Compensa el margen del contenedor */
+    margin-right: -90px; /* Compensa el margen del contenedor */
+}
+
+
+.glide__slide-carruseles {
+    display: inline-block;
+    width: 20%; /* Ajusta este valor según sea necesario */
+}
+
+.peli-carrusel {
+    width: 100%; /* Tamaño deseado para las imágenes */
+    height: 300px; /* Altura automática para mantener la proporción */
+}
+
+/* Estilos para los botones */
+.glide__arrows-carruseles {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px; /* Ajusta el espacio de los lados según sea necesario */
+    box-sizing: border-box;
+}
+
+/* Estilos para los botones individuales */
+.glide__arrow-carruseles {
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo semitransparente para los botones */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.glide__arrow-carruseles:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* Cambia el color de fondo al pasar el mouse */
+}

@@ -1,0 +1,17 @@
+.lista-figure {
+    cursor: pointer;   
+}
+
+.lista-imagen {
+    width: 100%;
+    height: 180px;
+    border-radius: 4px;
+    object-fit: cover;
+
+    transition: .3s all ease;
+}
+
+.lista-imagen:hover {
+    transform: scale(1.1);
+    border: 3px solid white;
+}

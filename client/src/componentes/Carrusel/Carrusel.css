@@ -1,0 +1,17 @@
+.glide__slide {
+    position: relative;
+    overflow: hidden;
+}
+
+.glide__slide img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 40px 80px rgba(0, 0, 0, 0.4); 
+}
+
+.carrusel-imagen {
+    width: auto; 
+    height: 100%; 
+    object-fit: cover; /* Esto asegura que la imagen se ajuste al tamaño del contenedor manteniendo su proporción */
+}
+
