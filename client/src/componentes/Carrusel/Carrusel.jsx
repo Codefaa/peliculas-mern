@@ -11,6 +11,7 @@ function Carrusel() {
             type: 'carousel',
             startAt: 0,
             perView: 1,
+            autoplay: 3000,
             peek: {
                 before: 130,
                 after: 130

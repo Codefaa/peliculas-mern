@@ -5,7 +5,7 @@ import Glide from '@glidejs/glide';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.min.css';
 import { leerPeliculas } from '../../api/auth';
-import ItemCarrusel from '../ItemCarrusel/ItemCarrusel';
+import Peliculas from '../Peliculas/Peliculas';
 
 function Carruseles({ id }) {
     const [peliculas, setPeliculas] = useState([]);
@@ -25,7 +25,7 @@ function Carruseles({ id }) {
                 type: 'carousel',
                 startAt: 0,
                 perView: 5,
-                gap: 10,
+                gap: 20,
                 peek: {
                     before: 0,
                     after: 100
@@ -37,11 +37,11 @@ function Carruseles({ id }) {
     return (
         <div className={`glide-carruseles glide-carruseles-${id}`}>
             <div className="glide__track" data-glide-el="track">
-                <ul className="glide__slides">
+                <div className="glide__slides">
                     {peliculas.map((pelicula) => (
-                        <ItemCarrusel key={pelicula._id} pelicula={pelicula} />
+                        <Peliculas peli={pelicula} />
                     ))}
-                </ul>
+                </div>
             </div>
 
             <div className="glide__arrows-carruseles" data-glide-el="controls">

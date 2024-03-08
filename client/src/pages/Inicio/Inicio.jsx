@@ -9,7 +9,7 @@ function Inicio() {
           <Carrusel />
           <h1 className='h1-prueba'>Recomendadas para ti</h1>
           <Carruseles id="1" />
-          <h1 className='h1-prueba'>Nuevo en Disney+</h1>
+          <h1 className='h1-prueba'>Nuevo en FacuPelis</h1>
           <Carruseles id="2" />
           <h1 className='h1-prueba'>Animacion de Pixar</h1>
           <Carruseles id="3" />

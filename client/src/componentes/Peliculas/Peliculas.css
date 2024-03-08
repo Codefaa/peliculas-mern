@@ -4,14 +4,15 @@
 
 .lista-imagen {
     width: 100%;
-    height: 180px;
+    height: 180px; 
     border-radius: 4px;
     object-fit: cover;
-
-    transition: .3s all ease;
+    transition: transform 0.3s;
+    transform-origin: center center;
 }
 
 .lista-imagen:hover {
-    transform: scale(1.1);
+    transform: scale(1.1, 1.1);
     border: 3px solid white;
 }
+
