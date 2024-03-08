@@ -8,7 +8,7 @@ function Peliculas( {peli} ) {
         <figure className='lista-figure' key={peli._id}> 
             <img className='lista-imagen' src={peli.imagen} alt={peli.titulo} />
         </figure>
-        </Link>
+        </Link> 
     )
 }
 

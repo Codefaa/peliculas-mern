@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API = 'http://localhost:8080/api';
+const URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
+
+const API = `${URL}/api`;
 
 export const leerPeliculas = () => axios.get(`${API}/peliculas`)
 

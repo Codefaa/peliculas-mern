@@ -5,5 +5,10 @@
 
 .peli-carrusel {
     height: 300px;
-    
+    transition: .3s all ease;
+}
+
+.peli-carrusel:hover {
+    transform: scale(1.1);
+    border: 3px solid white;
 }

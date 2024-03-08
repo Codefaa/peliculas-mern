@@ -5,10 +5,10 @@ const { appConfig, dbConfig } = require('./config')
 
 
 
-async function initApp (appConfig, dbConfig) {
+async function initApp (port, dbConfig) {
     try {
         await conectarDB(dbConfig);
-        app.listen(appConfig.port, () => console.log(`Escuchando el server http://localhost:${appConfig.port}`));
+        app.listen(port, () => console.log(`Escuchando el server http://localhost:${appConfig.port}`));
     }
     catch(error) {
         console.error(error);
@@ -16,4 +16,6 @@ async function initApp (appConfig, dbConfig) {
     }
 }
 
-initApp(appConfig, dbConfig);
+const port = process.env.PORT || appConfig.port;
+
+initApp(port, dbConfig);
