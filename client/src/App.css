@@ -18,14 +18,4 @@ body {
   background-color: #151722;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  color: white;
-}
 
-.h1-prueba {
-  color: white;
-  margin-left: 90px;
-}

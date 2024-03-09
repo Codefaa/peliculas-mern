@@ -2,13 +2,16 @@
     background-color: #0E0B14;
     display: flex;
     justify-content: center;
+    align-items: center;
     padding-block: 3rem;
     color: white;
+    margin-top: 80px;
 }
 
 .footer-seccion {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 20px;
 }
 
@@ -32,13 +35,7 @@
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 80px;
-}
-
-.lista-grid {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: repeat(4, auto);
     gap: 10px;
 }
 
@@ -46,6 +43,11 @@
     color: white;
     text-decoration: none;
     transition: .2s all ease;
+    margin-right: 40px;
+}
+
+.item-grid-ultimo {
+    margin-right: 0px;
 }
 
 .footer-boton {
@@ -70,3 +72,35 @@
 .footer-parrafo {
     font-size: .8rem;
 }
+
+
+
+@media (min-width: 1024px) {
+
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .footer-grid {
+        grid-template-columns: repeat(3, auto);
+    }
+
+}
+
+@media (max-width: 767px) {
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .item-grid {
+        font-size: .8rem;
+    }
+
+    .item-media-ultimo {
+        margin-right: 0px;
+    }
+}
+

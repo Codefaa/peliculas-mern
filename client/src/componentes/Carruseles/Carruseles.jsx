@@ -10,6 +10,7 @@ import Peliculas from '../Peliculas/Peliculas';
 function Carruseles({ id }) {
     const [peliculas, setPeliculas] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [perView, setPerView] = useState(5); // Estado para el número de elementos a mostrar en el carrusel
 
     useEffect(() => { 
         leerPeliculas()
@@ -20,19 +21,63 @@ function Carruseles({ id }) {
     }, []);
 
     useEffect(() => {
+        // Función para determinar el valor de peek: after
+        const peekAfterValue = () => {
+            if (window.matchMedia("(max-width: 767px)").matches) {
+                return 0; // Sin peek después para pantallas pequeñas
+            } else if (window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches) {
+                return 0; // Valor para pantallas entre 768px y 1023px
+            } else {
+                return 100; // Valor predeterminado para pantallas mayores a 1023px
+            }
+        };
+    
         if (loaded) {
-            new Glide(`.glide-carruseles-${id}`, {
+            const glide = new Glide(`.glide-carruseles-${id}`, {
                 type: 'carousel',
                 startAt: 0,
-                perView: 5,
+                perView: perView, // Usar el estado perView
                 gap: 20,
                 peek: {
                     before: 0,
-                    after: 100
+                    after: peekAfterValue() // Usar función para determinar el valor de peek: after
                 }
-            }).mount();
+            });
+            glide.mount();
+    
+            // Función para actualizar el número de elementos a mostrar en el carrusel
+            const handleResize = () => {
+                if (window.matchMedia("(max-width: 767px)").matches) {
+                    setPerView(2);
+                    glide.settings.perView = 2;
+                    glide.settings.peek.after = 0; // Sin peek después para pantallas pequeñas
+                    glide.update({ perView: 2 });
+                } else if (window.matchMedia("(min-width: 768px) and (max-width: 1023px)").matches) {
+                    setPerView(3);
+                    glide.settings.perView = 3;
+                    glide.settings.peek.after = 0; // Valor para pantallas entre 768px y 1023px
+                    glide.update({ perView: 3 });
+                } else {
+                    setPerView(5);
+                    glide.settings.perView = 5;
+                    glide.settings.peek.after = 100; // Valor predeterminado para pantallas mayores a 1023px
+                    glide.update({ perView: 5 });
+                }
+            };
+    
+            // Verificar la media query cuando la ventana cambie de tamaño
+            window.addEventListener("resize", handleResize);
+    
+            // Verificar la media query cuando el componente se monte
+            handleResize();
+    
+            // Limpiar el listener cuando el componente se desmonte
+            return () => {
+                window.removeEventListener("resize", handleResize);
+            };
         }
-    }, [loaded, id]);
+    }, [loaded, id, perView]);
+    
 
     return (
         <div className={`glide-carruseles glide-carruseles-${id}`}>
@@ -51,5 +96,6 @@ function Carruseles({ id }) {
         </div>
     );
 }
+
 
 export default Carruseles;

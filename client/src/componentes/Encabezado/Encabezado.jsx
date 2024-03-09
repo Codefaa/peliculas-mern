@@ -6,14 +6,15 @@ import { Link } from 'react-router-dom';
 function Encabezado() {
 
     return(
+        <>
         <header className='header'>
             <nav className='header-nav'>
                 <Link className='header-enlace enlace-logo' to="/"><img className='img-logo' src={logosecundario} alt="logo" /></Link>
-                <Link className='header-enlace' to="/"><i className="header-bi bi-house-door-fill"></i>   Inicio</Link>
-                <Link className='header-enlace' to="/peliculas/busqueda"><i className="header-bi bi-search"></i>   Busqueda</Link>
-                <Link className='header-enlace' to="/peliculas/categoria/pelicula"><i className="header-bi bi-film"></i>   Peliculas</Link>
-                <Link className='header-enlace' to="/peliculas/categoria/serie"><i className="header-bi bi-camera-reels-fill"></i>   Series</Link>
-                <Link className='header-enlace' to="/"><i className="header-bi bi-plus"></i>   Mi lista</Link>
+                <Link className='header-enlace' to="/"><i className="header-bi bi-house-door-fill"></i>  <p className='header-arriba-parrafo'>Inicio</p> </Link>
+                <Link className='header-enlace' to="/peliculas/busqueda"><i className="header-bi bi-search"></i>  <p className='header-arriba-parrafo'>Busqueda</p> </Link>
+                <Link className='header-enlace' to="/peliculas/categoria/pelicula"><i className="header-bi bi-film"></i>  <p className='header-arriba-parrafo'>Peliculas</p> </Link>
+                <Link className='header-enlace' to="/peliculas/categoria/serie"><i className="header-bi bi-camera-reels-fill"></i>  <p className='header-arriba-parrafo'>Series</p> </Link>
+                <Link className='header-enlace' to="/"><i className="header-bi bi-plus"></i>  <p className='header-arriba-parrafo'>Mi lista</p> </Link>
             </nav>
             
             <div className='header-cuenta'>
@@ -21,6 +22,9 @@ function Encabezado() {
                 <img className='img-cuenta' src={cuenta} alt="cuenta" />
             </div>  
         </header>
+        <div className="header-prueba">
+        </div>
+        </>
     )
 }
 

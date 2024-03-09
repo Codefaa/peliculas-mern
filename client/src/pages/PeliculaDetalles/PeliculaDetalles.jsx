@@ -14,11 +14,17 @@ function PeliculaDetalles() {
             .then(response => setPeliculas(response.data));
     }, [id])
 
+    let actores = '';
+    if (Array.isArray(pelicula.actores_principales)) {
+      actores = pelicula.actores_principales.join(', ');
+    }
+
     return(
         <section className='pelicula-contenedor'>
             <figure className='pelicula-figure'>
                 <img className='pelicula-imagen' src={pelicula.imagen} alt="" />
             </figure>
+
             <div className='pelicula-datos'>
                 <h1 className="pelicula-titulo">{pelicula.titulo}</h1> 
                 <div className="pelicula-aux">
@@ -29,8 +35,11 @@ function PeliculaDetalles() {
                 <p className='pelicula-descripcion'>{pelicula.descripcion}</p>
                 <p className='pelicula-genero'><span className='pelicula-span'>Genero/s:</span> {pelicula.genero}</p>
                 <p className="pelicula-director"><span className='pelicula-span'>Director/es:</span> {pelicula.director}</p>
-                <p className="pelicula-actores"><span className='pelicula-span'>Actor/es:</span> </p>
+                <p className="pelicula-actores"><span className='pelicula-span'>Actor/es: </span> {actores} </p>
+
+
             </div>
+            
             <div className="pelicula-trailer">
             <iframe
                     className='pelicula-video'

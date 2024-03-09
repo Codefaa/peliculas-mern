@@ -4,6 +4,7 @@
 }
 
 .glide__slide img {
+    border-radius: 5px;
     width: 100%;
     height: auto;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 40px 80px rgba(0, 0, 0, 0.4); 
@@ -15,3 +16,18 @@
     object-fit: cover; /* Esto asegura que la imagen se ajuste al tamaño del contenedor manteniendo su proporción */
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .glide__slide img {
+        height: 200px;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .glide__slide img {
+        height: 150px;
+    }
+
+}

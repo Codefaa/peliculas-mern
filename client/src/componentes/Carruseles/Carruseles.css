@@ -1,8 +1,9 @@
 .glide-carruseles {
-    width: calc(100% - 180px); /* Ancho ajustado */
+    width: calc(100% - 180px); 
     position: relative;
-    margin-left: 90px; /* Espacio en la izquierda */
-    margin-right: 90px; /* Espacio en la izquierda */
+    margin-left: 90px; 
+    margin-right: 90px; 
+    transition: .3s all ease;
 }
 
 /* Estilos para los botones */
@@ -13,13 +14,12 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0 20px; /* Ajusta el espacio de los lados según sea necesario */
+    padding: 0 20px;
     box-sizing: border-box;
 }
 
-/* Estilos para los botones individuales */
 .glide__arrow-carruseles {
-    background-color: rgba(255, 255, 255, 0.5); /* Fondo semitransparente para los botones */
+    background-color: rgba(255, 255, 255, 0.5); 
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -32,5 +32,27 @@
 }
 
 .glide__arrow-carruseles:hover {
-    background-color: rgba(255, 255, 255, 0.8); /* Cambia el color de fondo al pasar el mouse */
+    background-color: rgba(255, 255, 255, 0.8); 
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .glide-carruseles {
+        width: calc(100% - 44px); 
+        margin-left: 22px; 
+        margin-right: 22px; 
+    }
+
+}
+
+@media (max-width: 767px) {
+    
+    .glide-carruseles {
+        width: calc(100% - 44px); 
+        margin-left: 22px; 
+        margin-right: 22px; 
+    }
+
 }

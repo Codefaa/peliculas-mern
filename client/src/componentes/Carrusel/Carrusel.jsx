@@ -2,34 +2,86 @@ import './Carrusel.css';
 import Glide from '@glidejs/glide';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.min.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { leerPeliculas } from '../../api/auth';
+import { Link } from 'react-router-dom';
 
 function Carrusel() {
 
+    const [peliculas, setPeliculas] = useState([]);
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => { 
+        leerPeliculas()
+            .then(response => {
+                setPeliculas(response.data);
+                setLoaded(true);
+            });
+    }, []);
+
     useEffect(() => {
-        new Glide('.glide', {
+        if (loaded) {
+
+        const glide = new Glide('.glide', {
             type: 'carousel',
             startAt: 0,
             perView: 1,
             autoplay: 3000,
             peek: {
-                before: 130,
-                after: 130
+                before: peekBeforeValue(),
+                after: peekAfterValue()
             },
             focusAt: 'center'
-        }).mount();
-    }, [])
+        });
+        glide.mount();
+
+        const handleResize = () => {
+            glide.settings.peek.before = peekBeforeValue();
+            glide.settings.peek.after = peekAfterValue();
+            glide.update();
+        };
+
+        window.addEventListener("resize", handleResize);
+        handleResize();
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }}, [loaded]);
+
+    const peekBeforeValue = () => {
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            return 0; // Sin peek antes para pantallas pequeñas
+        } else {
+            return 130; // Valor predeterminado para pantallas mayores a 767px
+        }
+    };
+
+    const peekAfterValue = () => {
+        if (window.matchMedia("(max-width: 767px)").matches) {
+            return 0; // Sin peek después para pantallas pequeñas
+        } else {
+            return 130; // Valor predeterminado para pantallas mayores a 767px
+        }
+    };
+
+
+    const nombresABuscar = ["X-Men '97", "Star Wars: Las aventuras de los jóvenes Jedi", "Loki", "Percy Jackson y los dioses del Olimpo", "The Marvels"];
+    const peliculasYSeriesBuscadas = peliculas.filter(item => nombresABuscar.includes(item.titulo));
 
     return (
 
         <div className="glide">
             <div className="glide__track" data-glide-el="track">
                 <ul className="glide__slides">
-                    <li className="glide__slide"><img className='carrusel-imagen' src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/D4BE8805649F3762B0E49F512C78B6012247746784D707B49E7C39F4E27CFA9A/compose?width=1440&aspectRatio=3.91&format=jpeg&label=391_scrim" alt="" /></li>
-                    <li className="glide__slide"><img className='carrusel-imagen' src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/F20821A9A7A0461D3BFB51F7176629A4D5A831A9F173DA69F63F9E3317D60716/compose?width=1440&aspectRatio=3.91&format=jpeg&label=391_scrim" alt="" /></li>
-                    <li className="glide__slide"><img className='carrusel-imagen' src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/1EEE3796056A3A162C4F2636D2B7CD8BAC739104CEE1FD54A02118D5B3A85A8E/compose?width=1440&aspectRatio=3.91&format=jpeg&label=disneyplusoriginal_391_scrim" alt="" /></li>
-                    <li className="glide__slide"><img className='carrusel-imagen' src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/8923927931247F2EDEE74DB813A8FBC3560921556F9ED4A7C1AB3523381A57B1/scale?width=1440&aspectRatio=3.91&format=jpeg" alt="" /></li>
-                    <li className="glide__slide"><img className='carrusel-imagen' src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/A4CF45A2C4C5B34C7D4D449C033E1637EA3D2D6186FC9348F29F608BBA1D1DEF/compose?width=1440&aspectRatio=3.91&format=jpeg&label=disneyplusoriginal_391_scrim" alt="" /></li>
+                    {
+                        peliculasYSeriesBuscadas.map((pelicula) => (
+                            <Link to={`/peliculas/detalles/${pelicula._id}`}>
+                            <li className="glide__slide"><img className='carrusel-imagen' src={pelicula.imagen} alt={pelicula.titulo} /></li>
+                            </Link>
+                        ))
+                    }
+                    
                 </ul>
             </div>
 
