@@ -2,14 +2,30 @@
     margin: 90px 180px;
     display: grid;
     grid-template-columns: 210px auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
     gap: 20px;
     color: white;
 }
 
 .pelicula-figure {
     height: auto;
-    width: 200px;
+}
+
+.pelicula-favorita {
+    border: 0;
+    border-radius: 5px;
+    background-color: brown;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    padding: .8rem .5rem;
+    width: 210px;
+    grid-row: 2/2;
+}
+
+.pelicula-favorita:hover {
+    background-color: rgba(165, 42, 42, 0.671);
 }
 
 .pelicula-imagen {

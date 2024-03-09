@@ -2,16 +2,17 @@
     background-color: #0E0B14;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     padding-block: 3rem;
     color: white;
-    margin-top: 80px;
+    margin-top: auto;
 }
 
 .footer-seccion {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
     gap: 20px;
 }
 

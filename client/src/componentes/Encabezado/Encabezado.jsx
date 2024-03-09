@@ -14,7 +14,7 @@ function Encabezado() {
                 <Link className='header-enlace' to="/peliculas/busqueda"><i className="header-bi bi-search"></i>  <p className='header-arriba-parrafo'>Busqueda</p> </Link>
                 <Link className='header-enlace' to="/peliculas/categoria/pelicula"><i className="header-bi bi-film"></i>  <p className='header-arriba-parrafo'>Peliculas</p> </Link>
                 <Link className='header-enlace' to="/peliculas/categoria/serie"><i className="header-bi bi-camera-reels-fill"></i>  <p className='header-arriba-parrafo'>Series</p> </Link>
-                <Link className='header-enlace' to="/"><i className="header-bi bi-plus"></i>  <p className='header-arriba-parrafo'>Mi lista</p> </Link>
+                <Link className='header-enlace' to="/peliculas/favoritos"><i class="pelicula-agregar bi-heart-fill"></i>  <p className='header-arriba-parrafo'>Mi lista</p> </Link>
             </nav>
             
             <div className='header-cuenta'>

@@ -45,7 +45,7 @@ function Busqueda() {
                     ))
                 }
 
-                {peliculas.length === 0 && <p>No se encontraron películas</p>}
+                {peliculas.length === 0 && <p className='elementos-vacio'>No se encontraron películas</p>}
 
             </section>
 

@@ -1,10 +1,12 @@
 import { useParams } from 'react-router-dom';
 import './PeliculaDetalles.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { leerId } from '../../api/auth';
+import { FavoritosContext } from '../../context/FavoritoContext';
 
 function PeliculaDetalles() {
 
+    const { agregarFavorito, quitarFavorito, favoritos } = useContext(FavoritosContext);
     const { id } = useParams();
     const [pelicula, setPeliculas] = useState({});
     const videoId = pelicula.trailer ? pelicula.trailer.split('v=')[1] : '';
@@ -19,11 +21,27 @@ function PeliculaDetalles() {
       actores = pelicula.actores_principales.join(', ');
     }
 
+    function handleFavorito(pelicula) {
+     
+        if (favoritos.some((peli) => peli._id === pelicula._id)) {
+            quitarFavorito(pelicula);
+        } else {
+            agregarFavorito(pelicula);
+        }
+    }
+
+    console.log(favoritos);
+
     return(
         <section className='pelicula-contenedor'>
             <figure className='pelicula-figure'>
                 <img className='pelicula-imagen' src={pelicula.imagen} alt="" />
             </figure>
+
+            {favoritos.some((peli) => peli._id === pelicula._id) ? 
+            (<button className='pelicula-favorita' onClick={() => handleFavorito(pelicula)}><i class="pelicula-agregar bi-heart-fill"></i> Quitar de favoritos</button>) : 
+             <button className='pelicula-favorita' onClick={() => handleFavorito(pelicula)}><i class="pelicula-agregar bi-heart-fill"></i> Agregar a favoritos</button> }
+            
 
             <div className='pelicula-datos'>
                 <h1 className="pelicula-titulo">{pelicula.titulo}</h1> 
