@@ -24,3 +24,35 @@ body {
   gap: 90px;
   min-height: 100vh;
 }
+
+
+/* Cargando peliculas */
+
+/* .barra-de-carga {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+}
+
+.barra-de-progreso {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%; 
+  height: 100%;
+  background-color: #5BC0DF; 
+  animation: progreso 2s ease-in-out; 
+}
+
+@keyframes progreso {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.mensaje-load {
+  position: relative;
+  z-index: 1;
+  font-size: 1.5em;
+  margin-top: 10px;
+} */

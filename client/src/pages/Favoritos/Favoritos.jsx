@@ -7,9 +7,6 @@ function Favoritos() {
 
     const { favoritos } = useContext(FavoritosContext);
 
-    console.log('fav' + favoritos);
-    console.log(favoritos.length);
-
     return(
         <div className='lista-contenedor'>
             <h1 className='lista-titulo'>Favoritos</h1>

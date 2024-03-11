@@ -10,13 +10,16 @@ function Carrusel() {
 
     const [peliculas, setPeliculas] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => { 
         leerPeliculas()
             .then(response => {
                 setPeliculas(response.data);
                 setLoaded(true);
-            });
+            })
+            .catch(error => console.error(error))
+            .finally(() => setLoading(false));
     }, []);
 
     useEffect(() => {
@@ -72,6 +75,9 @@ function Carrusel() {
     return (
 
         <div className="glide">
+
+            {loading && <h1 className='load-mensaje'>Cargando peliculas...</h1>} 
+
             <div className="glide__track" data-glide-el="track">
                 <ul className="glide__slides">
                     {
@@ -84,7 +90,7 @@ function Carrusel() {
                     
                 </ul>
             </div>
-
+        
             <div className="glide__arrows" data-glide-el="controls">
                 <button className="glide__arrow glide__arrow--left" data-glide-dir="<"><i className="bi bi-chevron-left"></i></button>
                 <button className="glide__arrow glide__arrow--right" data-glide-dir=">"><i className="bi bi-chevron-right"></i></button>

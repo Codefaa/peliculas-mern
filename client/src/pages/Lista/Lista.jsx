@@ -8,15 +8,22 @@ function Lista() {
     
     const { categoria } = useParams();
     const [peliculas, setPeliculas] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         leerCategoria(categoria)
             .then(response => setPeliculas(response.data))
+            .catch(error => console.error(error))
+            .finally(() => setLoading(false));
     }, [categoria])
 
     return(
         <div className='lista-contenedor'>
             <h1 className='lista-titulo'>{categoria === 'pelicula' ? 'Peliculas' : 'Series'}</h1>
+
+            {loading && <h1 className='load'>Cargando peliculas...</h1>}    
+
+            {!loading && peliculas &&
             <section className='lista-seccion'>
                 {
                     peliculas.map((pelicula) => (
@@ -24,6 +31,7 @@ function Lista() {
                     ))
                 }
             </section>
+            }
         </div>
     )
 }

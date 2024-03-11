@@ -6,17 +6,20 @@ import Peliculas from '../../componentes/Peliculas/Peliculas';
 function Busqueda() {
 
     const [peliculas, setPeliculas] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         if (searchTerm.trim() !== '') {
             leerNombre(searchTerm)
                 .then(response => setPeliculas(response.data))
-                .catch(error => console.error(error));
+                .catch(error => console.error(error))
+                .finally(() => setLoading(false));
         } else {
             leerPeliculas()
                 .then(response => setPeliculas(response.data))
-                .catch(error => console.error(error));
+                .catch(error => console.error(error))
+                .finally(() => setLoading(false));
         }
     }, [searchTerm])
 
@@ -38,6 +41,17 @@ function Busqueda() {
 
 
             <h2 className='busqueda-titulo'>Explorar</h2>
+
+            {/* {loading && (
+            <div className='barra-de-carga'>
+                <div className='barra-de-progreso'></div>
+                <h1 className='mensaje-load'>Cargando películas...</h1>
+            </div>
+            )} */}
+
+            {loading && <h1 className='load-mensaje'>Cargando peliculas...</h1>}    
+
+            {!loading && peliculas && 
             <section className='busqueda-grid'>
                 {
                     peliculas.map((pelicula) => (
@@ -48,7 +62,7 @@ function Busqueda() {
                 {peliculas.length === 0 && <p className='elementos-vacio'>No se encontraron películas</p>}
 
             </section>
-
+        }
         </div>
     )
 }

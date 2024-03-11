@@ -1,6 +1,5 @@
 .lista-contenedor {
     margin-inline: 90px;
-    
 }
 
 .lista-titulo {
@@ -16,6 +15,10 @@
     transition: .3s all ease;
 }
 
+.load {
+    color: #5BC0DF; 
+    margin-block: 90px;
+}
 
 @media (min-width: 768px) and (max-width: 1023px) {
 

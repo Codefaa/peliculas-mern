@@ -10,14 +10,17 @@ import Peliculas from '../Peliculas/Peliculas';
 function Carruseles({ id }) {
     const [peliculas, setPeliculas] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [perView, setPerView] = useState(5); // Estado para el número de elementos a mostrar en el carrusel
 
     useEffect(() => { 
         leerPeliculas()
             .then(response => {
                 setPeliculas(response.data);
-                setLoaded(true);
-            });
+                setLoaded(true)
+            })
+            .catch(error => console.error(error))
+            .finally(() => setLoading(false));
     }, []);
 
     useEffect(() => {
@@ -81,6 +84,9 @@ function Carruseles({ id }) {
 
     return (
         <div className={`glide-carruseles glide-carruseles-${id}`}>
+
+            {loading && <h1 className='load-mensaje'>Cargando peliculas...</h1>} 
+
             <div className="glide__track" data-glide-el="track">
                 <div className="glide__slides">
                     {peliculas.map((pelicula) => (
